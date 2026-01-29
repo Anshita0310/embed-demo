@@ -1,0 +1,8 @@
+sentence-transformers
+datasets
+qdrant-client
+fastapi
+uvicorn
+numpy
+scikit-learn
+torch
