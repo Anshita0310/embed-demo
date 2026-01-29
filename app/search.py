@@ -8,10 +8,10 @@ client = get_qdrant_client()
 def semantic_search(query: str, top_k: int = TOP_K):
     query_vector = embedder.encode([query])[0]
 
-    results = client.search(
+    results = client.query_points(
         collection_name=COLLECTION_NAME,
-        query_vector=query_vector.tolist(),
+        query=query_vector.tolist(),
         limit=top_k
     )
 
-    return results
+    return results.points

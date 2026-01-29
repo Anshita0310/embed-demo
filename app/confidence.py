@@ -1,6 +1,9 @@
 def calculate_confidence(results):
     scores = [r.score for r in results]
 
+    if len(scores) == 0:
+        return 0.0
+    
     if len(scores) == 1:
         return round(scores[0], 3)
 
