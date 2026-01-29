@@ -1,4 +1,5 @@
 from datasets import load_dataset
+from qdrant_client.models import PointStruct
 from app.embeddings import EmbeddingModel
 from app.qdrant_client import get_qdrant_client, create_collection
 from app.config import COLLECTION_NAME
@@ -18,14 +19,16 @@ def ingest():
 
     points = []
     for idx, vector in enumerate(embeddings):
-        points.append({
-            "id": idx,
-            "vector": vector.tolist(),
-            "payload": {
-                "text": train_data[idx]["text"],
-                "label": int(train_data[idx]["label"])
-            }
-        })
+        points.append(
+            PointStruct(
+                id=idx,
+                vector=vector.tolist(),
+                payload={
+                    "text": train_data[idx]["text"],
+                    "label": int(train_data[idx]["label"])
+                }
+            )
+        )
 
     print("Storing vectors locally in Qdrant...")
     client.upsert(
@@ -33,7 +36,7 @@ def ingest():
         points=points
     )
 
-    print("✅ Ingestion completed!")
+    print("✅ Ingestion completed successfully!")
 
 if __name__ == "__main__":
     ingest()
