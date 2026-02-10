@@ -1,3 +1,5 @@
+### SENTENCE TRANSFORMER MODEL (all-MiniLM-L6-v2)
+
 • High level (Project Idea) – built a local semantic intent classification system using sentence embeddings 
 and a vector database, with confidence-based workflow routing. Exposed the semantic search system 
 via a REST API and tested it using Postman with query parameters. 
@@ -13,26 +15,38 @@ via a REST API and tested it using Postman with query parameters.
 This project implements a semantic intent-matching pipeline using sentence embeddings and a vector database to power confident workflow decisions.
 
 HuggingFace Dataset (PolyAI / Banking77)
-            ↓
-Sentence Transformer
-(Model: all-MiniLM-L6-v2)
-            ↓
-Vector Embeddings (384-d)
-            ↓
-Qdrant Vector Database
-(Cosine Similarity, Local / SQLite / Docker)
-            ↓
-User Query
-            ↓
-Query Embedding (384-d)
-            ↓
-Top-K Semantic Search (k = 3)
-            ↓
-Confidence Scoring
-(Boost if top-k labels match)
-            ↓
-Workflow Decision Engine
 
+            ↓
+            
+Sentence Transformer (Model: all-MiniLM-L6-v2)
+
+            ↓
+            
+Vector Embeddings (384-d)
+
+            ↓
+            
+Qdrant Vector Database (Cosine Similarity, Local / SQLite / Docker)
+
+            ↓
+            
+User Query
+
+            ↓
+            
+Query Embedding (384-d)
+
+            ↓
+            
+Top-K Semantic Search (k = 3)
+
+            ↓
+            
+Confidence Scoring (Boost if top-k labels match)
+
+            ↓
+            
+Workflow Decision Engine
 
 • Dataset  - 
 - PolyAI/Bnaking 77, There are 77 intents related to banking sector
